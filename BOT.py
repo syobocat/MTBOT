@@ -32,7 +32,7 @@ async def help(ctx, tohelp='all'): #tohelpにはヘルプを表示するコマ�
 @bot.command()
 async def say(ctx, *, message='使用方法 ： `!!say 文字列`'):
     await ctx.send(message)
-    await ctx.delete(ctx)
+    # await ctx.delete(ctx) うまく動かないのでできる人お願いします
 
 # 接続　絶対に書き換えない。
 bot.run(token)
