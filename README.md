@@ -3,6 +3,9 @@
 MTBOTは、「作りたい人が自由に作るBOT」です。<br />
 プログラミング初心者でもOK、作りたい人が作ります。
 
+## 「MT」って？
+MTBOTの「MT」は、「Make Together」、もしくは「Min'nade Tsukuru」の略です。
+
 <br />
 
 ## 参加するには？
