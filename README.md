@@ -9,7 +9,7 @@ MTBOTの「MT」は、「Make Together」、もしくは「Min'nade Tsukuru」�
 <br />
 
 ## 参加するには？
-まず、参加するには**Githubアカウント**が必要です。
+参加するには**Githubアカウント**が必要です。
 
 ページ右上の「Sign up」ボタンから作成することができます。
 
