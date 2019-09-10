@@ -10,6 +10,8 @@ import discord
 from discord.ext import commands
 bot = commands.Bot(command_prefix='!!')
 bot.remove_command('help')
+token = 'NjIwOTYxMTQ0NjU5NzcxMzky'
+token += '.XXetZQ.6xDmzGmjS21b_30fQLMqRgjWJPA'
 
 # ここからコマンド
 
@@ -33,4 +35,4 @@ async def say(ctx, *, message='使用方法 ： `!!say 文字列`'):
     await ctx.delete()
 
 # 接続　絶対に書き換えない。
-bot.run('NjIwOTYxMTQ0NjU5NzcxMzky.XXesQA.aIDTt3LD_pbt7-rBgW-281v9CZk')
+bot.run(token)
