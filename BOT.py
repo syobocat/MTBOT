@@ -33,4 +33,4 @@ async def say(ctx, *, message='使用方法 ： `!!say 文字列`'):
     await ctx.delete()
 
 # 接続　絶対に書き換えない。
-bot.run('NjIwOTYxMTQ0NjU5NzcxMzky.XXeaXw.Li_xIVO4nh8KtT0rlkvFskyRhoE')
+bot.run('NjIwOTYxMTQ0NjU5NzcxMzky.XXesQA.aIDTt3LD_pbt7-rBgW-281v9CZk')
