@@ -91,7 +91,8 @@ async def python(ctx, *, command):
         exec(command)
         text = f.getvalue()
         sys.stdout = sys.__stdout__
-        await ctx.send(text)
+    print(text)
+    await ctx.send(text)
 
 
 # 接続
