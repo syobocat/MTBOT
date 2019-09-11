@@ -32,7 +32,7 @@ async def help(ctx, tohelp='all'): #tohelpにはヘルプを表示するコマ�
 @bot.command()
 async def say(ctx, *, message='使用方法 ： `!!say 文字列`'):
     # await discord.ext.commands.bot.discord.TextChannel.delete_messages(ctx)
-    await discord.ext.commands.bot.discord.message.Message.delete(ctx)
+    await discord.ext.commands.bot.discord.message.Message.delete(ctx.message)
     await ctx.send(message)
 
 # 接続　絶対に書き換えない。
