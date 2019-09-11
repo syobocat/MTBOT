@@ -27,7 +27,6 @@ async def help(ctx, tohelp='all'): #tohelpにはヘルプを表示するコマ�
         embed.add_field(name='!!isprime', value='素数かどうか判定します。数値以外の入力には対応していません。', inline=False)
         embed.add_field(name='!!calc', value='BOTに計算させることができます。Pythonの標準機能を使用するため、高度なことはできません。', inline=False)
         embed.add_field(name='!!python', value='Pythonのコマンドを実行し、実行結果を返します。', inline=False)
-        embed.add_field(name='!!say', value='BOTに喋らせることができます', inline=False)
 
         #!!helpの説明は一番最後に
         embed.add_field(name='!!help', value='この一覧を表示します。', inline=False)
