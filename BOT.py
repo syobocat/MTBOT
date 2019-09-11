@@ -86,11 +86,12 @@ async def calc(ctx, *, formula):
 
 @bot.command()
 async def python(ctx, *, command):
+    temp_sysout = sys.stdout
     with io.StringIO() as f:
         sys.stdout = f
         exec(command)
         text = f.getvalue()
-        sys.stdout = sys.__stdout__
+        sys.stdout = temp_sysout
     print(text)
     await ctx.send(text)
 
