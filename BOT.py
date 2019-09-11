@@ -40,7 +40,7 @@ async def help(ctx, tohelp='all'): #tohelpにはヘルプを表示するコマ�
         await ctx.send(embed=embed)
 
     if tohelp == 'calc':
-        embed = discord.Embed(title='使用方法 ： `!!calc <式>`', description='BOTに計算させることができます。Pythonの標準機能を使用するため、高度なことはできません。', color=0xffffff)
+        embed = discord.Embed(title='使用方法 ： `!!calc <式>`', description='BOTに計算させることができます。', color=0xffffff)
         await ctx.send(embed=embed)
 
     if tohelp == 'python':
