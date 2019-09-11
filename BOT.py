@@ -7,6 +7,7 @@ Python上級者の方で「ここはこうしたほうがいい」というも�
 
 # 設定　よほどのことがなければ変更しないこと
 import discord
+import re
 from discord.ext import commands
 bot = commands.Bot(command_prefix='!!')
 bot.remove_command('help')
@@ -23,12 +24,13 @@ async def help(ctx, tohelp='all'): #tohelpにはヘルプを表示するコマ�
         embed = discord.Embed(title='現在利用可能なコマンドは以下のとおりです。', description='', color=0xffffff)
         embed.add_field(name='!!say', value='任意のテキストを送信します。', inline=False)
         embed.add_field(name='!!isprime', value='素数かどうか判定します。数値以外の入力には対応していません。', inline=False)
+        embed.add_field(name='!!say', value='BOTに喋らせることができます', inline=False)
 
         #!!helpの説明は一番最後に
         embed.add_field(name='!!help', value='この一覧を表示します。', inline=False)
         await ctx.send(embed=embed)
     if tohelp == 'say':
-        embed = discord.Embed(title='使用方法 ： `!!say <文字列>`', description='任意のテキストを送信します。', color=0xffffff)
+        embed = discord.Embed(title='使用方法 ： `!!say <文字列>`', description='BOTに喋らせることができます。', color=0xffffff)
         await ctx.send(embed=embed)
 
     if tohelp == 'isprime':
@@ -37,8 +39,13 @@ async def help(ctx, tohelp='all'): #tohelpにはヘルプを表示するコマ�
 
 @bot.command()
 async def say(ctx, *, message='使用方法 ： `!!say 文字列`'):
-    # await discord.ext.commands.bot.discord.TextChannel.delete_messages(ctx)
-    await discord.ext.commands.bot.discord.message.Message.delete(ctx.message)
+    if message.startswith('delete') == True:
+        await discord.ext.commands.bot.discord.message.Message.delete(ctx.message)
+        message = message.split()
+        message[0] = ''
+        message = ' '.join(message)
+        message = message.strip()
+
     await ctx.send(message)
 
 @bot.command()
