@@ -94,5 +94,5 @@ async def python(ctx, *, command):
         await ctx.send(text)
 
 
-# 接続　絶対に書き換えない。
+# 接続
 bot.run(token)
