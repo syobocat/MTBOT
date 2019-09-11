@@ -6,14 +6,15 @@ Python上級者の方で「ここはこうしたほうがいい」というも�
 '''
 
 # 設定　よほどのことがなければ変更しないこと
+import io
+import sys
 import discord
-import re
+import numpy as np
 from discord.ext import commands
 bot = commands.Bot(command_prefix='!!')
 bot.remove_command('help')
 token = 'NjIwOTYxMTQ0NjU5NzcxMzky'
 token += '.XXetZQ.6xDmzGmjS21b_30fQLMqRgjWJPA'
-import numpy as np
 
 # ここからコマンド
 
@@ -86,7 +87,12 @@ async def calc(ctx, *, formula):
 
 @bot.command()
 async def python(ctx, *, command):
-    await ctx.send(exec(command))
+    with io.StringIO() as f:
+        sys.stdout = f
+        exec(command)
+        text = f.getvalue()
+        sys.stdout = sys.__stdout__
+        await ctx.send(text)
 
 
 # 接続　絶対に書き換えない。
