@@ -24,17 +24,27 @@ async def help(ctx, tohelp='all'): #tohelpにはヘルプを表示するコマ�
         embed = discord.Embed(title='現在利用可能なコマンドは以下のとおりです。', description='', color=0xffffff)
         embed.add_field(name='!!say', value='任意のテキストを送信します。', inline=False)
         embed.add_field(name='!!isprime', value='素数かどうか判定します。数値以外の入力には対応していません。', inline=False)
+        embed.add_field(name='!!calc', value='BOTに計算させることができます。Pythonの標準機能を使用するため、高度なことはできません。', inline=False)
+        embed.add_field(name='!!python', value='Pythonのコマンドを実行し、実行結果を返します。', inline=False)
         embed.add_field(name='!!say', value='BOTに喋らせることができます', inline=False)
 
         #!!helpの説明は一番最後に
         embed.add_field(name='!!help', value='この一覧を表示します。', inline=False)
         await ctx.send(embed=embed)
     if tohelp == 'say':
-        embed = discord.Embed(title='使用方法 ： `!!say <文字列>`', description='BOTに喋らせることができます。', color=0xffffff)
+        embed = discord.Embed(title='使用方法 ： `!!say (delete) <文字列>`', description='BOTに任意の文字列を送信させることができます。\n文字列の前にdeleteを入れることにより、本当にBOTが話しているように見せることもできます。', color=0xffffff)
         await ctx.send(embed=embed)
 
     if tohelp == 'isprime':
-        embed = discord.Embed(title='使用方法 ： `!!say <数値>`', description='素数かどうか判定します。数値以外の入力には対応していません。', color=0xffffff)
+        embed = discord.Embed(title='使用方法 ： `!!isprime <数値>`', description='素数かどうか判定します。数値以外の入力には対応していません。', color=0xffffff)
+        await ctx.send(embed=embed)
+
+    if tohelp == 'calc':
+        embed = discord.Embed(title='使用方法 ： `!!calc <式>`', description='BOTに計算させることができます。Pythonの標準機能を使用するため、高度なことはできません。', color=0xffffff)
+        await ctx.send(embed=embed)
+
+    if tohelp == 'python':
+        embed = discord.Embed(title='使用方法 ： `!!python <コマンド>', description='Pythonのコマンドを実行し、実行結果を返します。', color=0xffffff)
         await ctx.send(embed=embed)
 
 @bot.command()
@@ -50,7 +60,7 @@ async def say(ctx, *, message='使用方法 ： `!!say 文字列`'):
 
 @bot.command()
 async def isprime(ctx, *, message='0'):
-    returning = ""
+    returning = "入力が不適切です"
     is_composite = False
 
     num = int(message)
@@ -69,6 +79,14 @@ async def isprime(ctx, *, message='0'):
         else:
             returning = str(num) + "は素数です"
     await ctx.send(returning)
+
+@bot.command()
+async def calc(ctx, *, formula):
+    await ctx.send(eval(formula))
+
+@bot.command()
+async def python(ctx, *, command):
+    await ctx.send(exec(command))
 
 
 # 接続　絶対に書き換えない。
