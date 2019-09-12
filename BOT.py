@@ -86,13 +86,11 @@ async def calc(ctx, *, formula):
 
 @bot.command()
 async def python(ctx, *, toexe):
-    temp_sysout = sys.stdout
-    with io.StringIO() as f:
-        sys.stdout = f
-        exec(toexe)
-        text = f.getvalue()
-        sys.stdout = temp_sysout
-    await ctx.send(text)
+    f = io.StringIO()
+    sys.stdout = f
+    exec(toexe)
+    sys.stdout = sys.__stdout__
+    await ctx.send(f.getvalue())
 
 
 # 接続
