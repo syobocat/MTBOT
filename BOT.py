@@ -89,10 +89,9 @@ async def python(ctx, *, command):
     temp_sysout = sys.stdout
     with io.StringIO() as f:
         sys.stdout = f
-        exec(command)
+        print(exec(command))
         text = f.getvalue()
         sys.stdout = temp_sysout
-    print(text)
     await ctx.send(text)
 
 
