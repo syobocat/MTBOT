@@ -10,7 +10,6 @@ import io
 import sys
 import discord
 import numpy as np
-import sympy as sp
 from discord.ext import commands
 bot = commands.Bot(command_prefix='!!')
 bot.remove_command('help')
@@ -92,15 +91,6 @@ async def python(ctx, *, toexe):
     exec(toexe)
     sys.stdout = sys.__stdout__
     await ctx.send(f.getvalue())
-
-@bot.command()
-async def exp(ctx, x, a, y, b, exp):
-    x = sp.Symbol('x')
-    y = sp.Symbol('y')
-    if a is not None:
-        exp.subs(x, a)
-        exp.subs(y, b)
-    await ctx.send(sp.solve(exp))
 
 # 接続
 bot.run(token)
