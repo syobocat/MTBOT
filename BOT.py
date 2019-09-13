@@ -86,14 +86,11 @@ async def calc(ctx, *, formula):
 
 @bot.command()
 async def python(ctx, *, toexe):
-    # 旧バージョンのアーカイブ
-    # f = io.StringIO()
-    # sys.stdout = f
-    # exec(toexe)
-    # sys.stdout = sys.__stdout__
-    # await ctx.send(f.getvalue())
-
-    await ctx.send(exec(toexe))
+    f = io.StringIO()
+    sys.stdout = f
+    print(exec(toexe))
+    sys.stdout = sys.__stdout__
+    await ctx.send(f.getvalue())
 
 # 接続
 bot.run(token)
