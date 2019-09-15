@@ -101,7 +101,7 @@ async def python(ctx, *, toexe):
     if len(result) + 6 >= 2000:
         if DoAlthoughOver2000 == True:
             result = '```\n' + result
-            result = splitlines(result)
+            result = result.splitlines()
             i = 1
             startline = 0
             for i in range(1, len(result)):
