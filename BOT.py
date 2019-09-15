@@ -100,7 +100,6 @@ async def python(ctx, *, toexe):
     result = subprocess.check_output(['python', 'temp.py']).decode('utf-8')
     if len(result) + 6 >= 2000:
         if DoAlthoughOver2000 == True:
-            result = '```\n' + result
             result = result.splitlines()
             i = 1
             startline = 0
@@ -110,13 +109,13 @@ async def python(ctx, *, toexe):
                 if len(temp) + 3 >= 2000:
                     endline = i - 1
                     content = result[startline:endline]
-                    content = '\n'.join(content) + '\n```'
+                    content = '```\n' + '\n'.join(content) + '\n```'
                     startline = endline + 1
                     await ctx.send(content)
                 else:
                     endline = i
             content = result[startline:endline]
-            content = '\n'.join(content) + '\n```'
+            content = '```\n' + '\n'.join(content) + '\n```'
             await ctx.send(content)
         else:
             await ctx.send('出力された文字数が2000を超えています。続行するには`over2000`オプションをつけてください。')
