@@ -8,6 +8,7 @@ Python上級者の方で「ここはこうしたほうがいい」というも�
 # 設定　よほどのことがなければ変更しないこと
 import io
 import sys
+import subprocess
 import discord
 import numpy as np
 from discord.ext import commands
@@ -86,11 +87,19 @@ async def calc(ctx, *, formula):
 
 @bot.command()
 async def python(ctx, *, toexe):
-    f = io.StringIO()
-    sys.stdout = f
-    print(exec(toexe))
-    sys.stdout = sys.__stdout__
-    await ctx.send(f.getvalue())
+    # 旧バージョンのアーカイブ
+    # f = io.StringIO()
+    # sys.stdout = f
+    # print(exec(toexe))
+    # sys.stdout = sys.__stdout__
+    # await ctx.send(f.getvalue())
+
+    with open("temp.py", "w") as f:
+        print(toexe, file=f)
+
+    result = subprocess.check_output(['python', 'temp.py'])
+    await ctx.send(result)
+
 
 # 接続
 bot.run(token)
