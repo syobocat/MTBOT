@@ -89,11 +89,9 @@ async def calc(ctx, *, formula):
 async def python(ctx, *, toexe = 'print("コマンドを入力してください")'):
     DoAlthoughOver2000 = toexe.startswith('over2000')
     if DoAlthoughOver2000 == True:
-        toexe = toexe.split(' ')
+        toexe = toexe.split(None, 1)
         if len(toexe) >= 2:
-            toexe[0] = ''
-            toexe = ' '.join(toexe)
-            toexe = toexe.strip()
+            toexe = toexe[1]
         else:
             toexe = 'print("コマンドを入力してください")'
 
