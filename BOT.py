@@ -86,13 +86,16 @@ async def calc(ctx, *, formula):
     await ctx.send(eval(formula))
 
 @bot.command()
-async def python(ctx, *, toexe):
+async def python(ctx, *, toexe = 'print("コマンドを入力してください")'):
     DoAlthoughOver2000 = toexe.startswith('over2000')
     if DoAlthoughOver2000 == True:
         toexe = toexe.split()
-        toexe[0] = ''
-        toexe = ' '.join(toexe)
-        toexe = toexe.strip()
+        if len(toexe) >= 2:
+            toexe[0] = ''
+            toexe = ' '.join(toexe)
+            toexe = toexe.strip()
+        else:
+            toexe = 'print("コマンドを入力してください")'
 
     with open("temp.py", "w") as f:
         print(toexe, file=f)
