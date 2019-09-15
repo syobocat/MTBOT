@@ -97,7 +97,7 @@ async def python(ctx, *, toexe):
     with open("temp.py", "w") as f:
         print(toexe, file=f)
 
-    result = subprocess.check_output(['python', 'temp.py'])
+    result = subprocess.check_output(['python', 'temp.py']).decode('utf-8')
     await ctx.send(result)
 
 
