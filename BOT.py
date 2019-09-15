@@ -100,7 +100,8 @@ async def python(ctx, *, toexe = 'print("コマンドを入力してください
     with open("temp.py", "w") as f:
         print(toexe, file=f)
 
-    result = subprocess.check_output(['python', 'temp.py']).decode('utf-8')
+    result = subprocess.run('python temp.py', stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
+    result = result.stdout.decode('utf-8')
     if len(result) + 6 >= 2000:
         if DoAlthoughOver2000 == True:
             result = result.splitlines()
