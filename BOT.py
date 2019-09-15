@@ -106,7 +106,7 @@ async def python(ctx, *, toexe):
             for i in range(1, len(result)):
                 temp = result[startline:i]
                 temp = '\n'.join(temp)
-                if len(temp) + 3 >= 2000:
+                if len(temp) + 6 >= 2000:
                     endline = i - 1
                     content = result[startline:endline]
                     content = '```\n' + '\n'.join(content) + '\n```'
