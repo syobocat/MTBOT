@@ -119,7 +119,7 @@ async def python(ctx, *, toexe):
             content = '\n'.join(content) + '\n```'
             await ctx.send(content)
         else:
-            await ctx.send('出力された文字数が2000を超えています。続行するには`over2000`オプションをつけてください。)
+            await ctx.send('出力された文字数が2000を超えています。続行するには`over2000`オプションをつけてください。')
     else:
         result = '```\n' + result + '\n```'
         await ctx.send(result)
