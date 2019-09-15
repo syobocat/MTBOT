@@ -87,19 +87,42 @@ async def calc(ctx, *, formula):
 
 @bot.command()
 async def python(ctx, *, toexe):
-    # 旧バージョンのアーカイブ
-    # f = io.StringIO()
-    # sys.stdout = f
-    # print(exec(toexe))
-    # sys.stdout = sys.__stdout__
-    # await ctx.send(f.getvalue())
+    DoAlthoughOver2000 = toexe.startswith('over2000')
+    if DoAlthoughOver2000 == True:
+        toexe = toexe.split()
+        toexe[0] = ''
+        toexe = ' '.join(toexe)
+        toexe = toexe.strip()
 
     with open("temp.py", "w") as f:
         print(toexe, file=f)
 
     result = subprocess.check_output(['python', 'temp.py']).decode('utf-8')
-    result = '```\n' + result + '\n```'
-    await ctx.send(result)
+    if len(result) + 6 >= 2000:
+        if DoAlthoughOver2000 == True:
+            result = '```\n' + result
+            result = splitlines(result)
+            i = 1
+            startline = 0
+            for i in range(1, len(result)):
+                temp = result[startline:i]
+                temp = '\n'.join(temp)
+                if len(temp) + 3 >= 2000:
+                    endline = i - 1
+                    content = result[startline:endline]
+                    content = '\n'.join(content) + '\n```'
+                    startline = endline + 1
+                    await ctx.send(content)
+                else:
+                    endline = i
+            content = result[startline:endline]
+            content = '\n'.join(content) + '\n```'
+            await ctx.send(content)
+        else:
+            await ctx.send('出力された文字数が2000を超えています。続行するには`over2000`オプションをつけてください。)
+    else:
+        result = '```\n' + result + '\n```'
+        await ctx.send(result)
 
 
 # 接続
