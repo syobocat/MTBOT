@@ -103,7 +103,7 @@ async def python(ctx, *, toexe):
             result = result.splitlines()
             i = 1
             startline = 0
-            for i in range(1, len(result)):
+            for i in range(1, len(result) + 1):
                 temp = result[startline:i]
                 temp = '\n'.join(temp)
                 if len(temp) + 6 >= 2000:
