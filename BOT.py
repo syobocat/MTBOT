@@ -65,9 +65,7 @@ async def isprime(ctx, *, message='0'):
     is_composite = False
 
     num = int(message)
-    if num == 57:
-        returning = "#57は素数"
-    elif num < 2 or (num % 2 == 0 and num > 2) :
+    if num < 2 or (num % 2 == 0 and num > 2) :
         returning = str(num) + "は素数ではありません"
     else:
         lim = int(np.sqrt(num)) + 1
