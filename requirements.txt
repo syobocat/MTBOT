@@ -1,2 +1,4 @@
-discord.py
-numpy
+discord==1.0.1
+discord.py==1.2.5
+numpy==1.18.0
+pip==19.3.1
