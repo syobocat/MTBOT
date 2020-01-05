@@ -49,6 +49,10 @@ async def help(ctx, tohelp='all'): #tohelpにはヘルプを表示するコマ�
         await ctx.send(embed=embed)
 
 @bot.command()
+async def check(ctx):
+    await ctx.send("このBotは現在稼働中です。")
+        
+@bot.command()
 async def say(ctx, *, message='使用方法 ： `??say 文字列`'):
     if message.startswith('delete') == True:
         await discord.ext.commands.bot.discord.message.Message.delete(ctx.message)
@@ -64,6 +68,7 @@ async def isprime(ctx, *, message='0'):
     returning = "入力が不適切です:自然数を入力して下さい"
     is_composite = False
     if message.isdecimal() == True:
+        num = int(message)
         if num < 2 or (num % 2 == 0 and num > 2) :
             returning = str(num) + "は素数ではありません"
         else:
