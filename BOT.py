@@ -60,7 +60,7 @@ async def help(ctx, tohelp='all'): #tohelpにはヘルプを表示するコマ�
 
     if tohelp == 'report':
         embed = discord.Embed(title='使用方法 ： `??report <文字列>`', description='バグやエラーが発生した、Botが正常に動作しないといった場合はこのコマンドで報告をお願いします。送信されたレポートは開発者の元に届きます。', color=0xffffff)
-        await ctx.send(embed=Embed)
+        await ctx.send(embed=mbed)
 
 @bot.command()
 async def check(ctx):
