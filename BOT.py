@@ -13,6 +13,10 @@ import subprocess
 import discord
 import numpy as np
 from discord.ext import commands
+
+import logging
+logging.basicConfig(level=logging.WARNING)
+
 bot = commands.Bot(command_prefix='??')
 bot.remove_command('help')
 token = 'NjIwOTYxMTQ0NjU5NzcxMzky'
