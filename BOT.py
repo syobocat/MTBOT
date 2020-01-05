@@ -20,7 +20,7 @@ token += '.XhFqZQ.hrxR_QH2jTsof4S6PgBeqRHz6o0'
 loaded = datetime.datetime.now(
     datetime.timezone(datetime.timedelta(hours=9))
 )
-loaded = str(loaded.year) + '年' + str(loaded.month) + '月' + str(loaded.day) + '日' + str(loaded.hour) + ':' + str(loaded.minute)
+loaded = loaded.strftime('%Y年%m月%d日 %H:%M')
 
 # ここからコマンド
 
