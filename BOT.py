@@ -74,12 +74,12 @@ async def say(ctx, *, message='使用方法 ： `??say 文字列`'):
 
 @bot.command()
 async def isprime(ctx, *, message='0'):
-    returning = "入力が不適切です:自然数を入力して下さい"
+    returning = '入力が不適切です:自然数を入力して下さい'
     is_composite = False
     if message.isdecimal() == True:
         num = int(message)
         if num < 2 or (num % 2 == 0 and num > 2) :
-            returning = str(num) + "は素数ではありません"
+            returning = str(num) + 'は素数ではありません'
         else:
             lim = int(np.sqrt(num)) + 1
             for i in range(3, lim, 2):
@@ -87,9 +87,9 @@ async def isprime(ctx, *, message='0'):
                     is_composite = True
                     break
             if is_composite:
-                returning = str(num) + "は素数ではありません"
+                returning = str(num) + 'は素数ではありません'
             else:
-                returning = str(num) + "は素数です"
+                returning = str(num) + 'は素数です'
         await ctx.send(returning)
     else:
         await ctx.send(returning)
