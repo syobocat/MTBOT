@@ -8,6 +8,7 @@ Python上級者の方で「ここはこうしたほうがいい」というも�
 # 設定　よほどのことがなければ変更しないこと
 import io
 import sys
+import datetime
 import subprocess
 import discord
 import numpy as np
@@ -16,6 +17,10 @@ bot = commands.Bot(command_prefix='??')
 bot.remove_command('help')
 token = 'NjIwOTYxMTQ0NjU5NzcxMzky'
 token += '.XhFqZQ.hrxR_QH2jTsof4S6PgBeqRHz6o0'
+loaded = datetime.datetime.now(
+    datetime.timezone(datetime.timedelta(hours=9))
+)
+loaded = str(loaded.year) + '年' + str(loaded.month) + '月' + str(loaded.day) + '日' + str(loaded.hour) + ':' ; str(loaded.minute)
 
 # ここからコマンド
 
@@ -34,7 +39,7 @@ async def help(ctx, tohelp='all'): #tohelpにはヘルプを表示するコマ�
         embed.add_field(name='??help', value='この一覧を表示します。', inline=False)
         await ctx.send(embed=embed)
     if tohelp == 'check':
-        embed = discord.Embed(title='使用方法 ： `??check`', description='Botが減税オンラインかどうかを確認できます。\nBotの反応がないときにお使いください。', inline=False, color=0xffffff)
+        embed = discord.Embed(title='使用方法 ： `??check`', description='Botが現在オンラインかどうかを確認できます。\nBotの反応がないときにお使いください。', inline=False, color=0xffffff)
         await ctx.send(embed=embed)
     if tohelp == 'say':
         embed = discord.Embed(title='使用方法 ： `??say (delete) <文字列>`', description='BOTに任意の文字列を送信させることができます。\n文字列の前にdeleteを入れることにより、本当にBOTが話しているように見せることもできます。', color=0xffffff)
@@ -54,8 +59,8 @@ async def help(ctx, tohelp='all'): #tohelpにはヘルプを表示するコマ�
 
 @bot.command()
 async def check(ctx):
-    await ctx.send("このBotは現在稼働中です。")
-        
+    await ctx.send("このBotは現在稼働中です。\n最終更新日時は" + loaded + 'です。')
+
 @bot.command()
 async def say(ctx, *, message='使用方法 ： `??say 文字列`'):
     if message.startswith('delete') == True:
