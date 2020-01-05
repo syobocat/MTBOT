@@ -139,5 +139,13 @@ async def python(ctx, *, toexe = 'print("コマンドを入力してください
         await ctx.send(result)
 
 
+#バグレポート
+@bot.command()
+async def report(ctx, repo):
+    CHANNEL_ID = 663311114477633566
+    channel = bot.get_channel(CHANNEL_ID)
+    channel.send(str(repo))
+
+
 # 接続
 bot.run(token)
