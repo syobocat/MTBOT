@@ -24,6 +24,7 @@ token += '.XhFqZQ.hrxR_QH2jTsof4S6PgBeqRHz6o0'
 async def help(ctx, tohelp='all'): #tohelpにはヘルプを表示するコマンド名が入る
     if tohelp == 'all':
         embed = discord.Embed(title='現在利用可能なコマンドは以下のとおりです。', description='', color=0xffffff)
+        embed.add_field(name='??check', value='このBotがオンラインがどうか確認できます。Botの反応がないときにお使いください。', inline=False)
         embed.add_field(name='??say', value='任意のテキストを送信します。', inline=False)
         embed.add_field(name='??isprime', value='素数かどうか判定します。数値以外の入力には対応していません。', inline=False)
         embed.add_field(name='??calc', value='BOTに計算させることができます。Pythonの標準機能を使用するため、高度なことはできません。', inline=False)
@@ -31,6 +32,9 @@ async def help(ctx, tohelp='all'): #tohelpにはヘルプを表示するコマ�
 
         #!!helpの説明は一番最後に
         embed.add_field(name='??help', value='この一覧を表示します。', inline=False)
+        await ctx.send(embed=embed)
+    if tohelp == 'check':
+        embed = discord.Embed(title='使用方法 ： `??check`', description='Botが減税オンラインかどうかを確認できます。\nBotの反応がないときにお使いください。', inline=False, color=0xffffff)
         await ctx.send(embed=embed)
     if tohelp == 'say':
         embed = discord.Embed(title='使用方法 ： `??say (delete) <文字列>`', description='BOTに任意の文字列を送信させることができます。\n文字列の前にdeleteを入れることにより、本当にBOTが話しているように見せることもできます。', color=0xffffff)
