@@ -15,7 +15,7 @@ from discord.ext import commands
 bot = commands.Bot(command_prefix='??')
 bot.remove_command('help')
 token = 'NjIwOTYxMTQ0NjU5NzcxMzky'
-token += '.XXetZQ.6xDmzGmjS21b_30fQLMqRgjWJPA'
+token += '.XhFqZQ.hrxR_QH2jTsof4S6PgBeqRHz6o0'
 
 # ここからコマンド
 
