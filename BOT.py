@@ -57,6 +57,9 @@ async def help(ctx, tohelp='all'): #tohelpにはヘルプを表示するコマ�
         embed = discord.Embed(title='使用方法 ： `??python <コマンド>', description='Pythonのコマンドを実行し、実行結果を返します。', color=0xffffff)
         await ctx.send(embed=embed)
 
+    if tohelp == 'report':
+        embed = discord.Embed(title='使用方法 ： `??report <文字列>`', description='バグやエラーが発生した、Botが正常に動作しないといった場合はこのコマンドで報告をお願いします。送信されたレポートは開発者の元に届きます。', color=0xffffff)
+
 @bot.command()
 async def check(ctx):
     await ctx.send("このBotは現在稼働中です。\n最終更新日時は" + loaded + 'です。')
