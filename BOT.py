@@ -147,12 +147,11 @@ async def python(ctx, *, toexe = 'print("コマンドを入力してください
 
 #バグレポート
 @bot.command()
-async def report(ctx, repo):
-    CHANNEL_ID = 663311114477633566
-    channel = bot.get_channel(CHANNEL_ID)
-    author = ctx.author
-    repo = "From: " + str(author) + "\n" + repo
-    await channel.send(repo)
+async def report(ctx, *, repo:str):
+    if ctx.guild.id == 659177467243659287:
+        channel = ctx.guild.get_channel(663311114477633566)
+        repo = "From: " + str(ctx.author) + "\n" + repo
+        await channel.send(repo)
 
 
 # 接続
