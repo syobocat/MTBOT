@@ -148,7 +148,8 @@ async def python(ctx, *, toexe = 'print("コマンドを入力してください
 #バグレポート
 @bot.command()
 async def report(ctx, repo:str):
-    channel = bot.get_channel(663311114477633566)
+    CHANNEL_ID = 663311114477633566
+    channel = bot.get_channel(CHANNEL_ID)
     try:
         channel.send(repo)
     except TimeoutError:
