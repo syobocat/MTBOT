@@ -147,13 +147,12 @@ async def python(ctx, *, toexe = 'print("コマンドを入力してください
 
 #バグレポート
 @bot.command()
-async def report(ctx, repo:str):
+async def report(ctx, repo):
     CHANNEL_ID = 663311114477633566
     channel = bot.get_channel(CHANNEL_ID)
-    try:
-        channel.send(repo)
-    except TimeoutError:
-        ctx.send("TimeoutError: please try again.")
+    author = ctx.author
+    repo = "From: " + str(author) + "\n" + repo
+    await channel.send(repo)
 
 
 # 接続
