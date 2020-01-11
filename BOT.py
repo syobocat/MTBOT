@@ -102,7 +102,7 @@ async def isprime(ctx, *, message='0'):
 
 @bot.command()
 async def calc(ctx, *, formula):
-    await ctx.send(eval(formula))
+    await ctx.send(str(eval(formula)))
 
 @bot.command()
 async def python(ctx, *, toexe = 'print("コマンドを入力してください")'):
