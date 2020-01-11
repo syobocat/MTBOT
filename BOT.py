@@ -147,7 +147,7 @@ async def python(ctx, *, toexe = 'print("コマンドを入力してください
 
 #バグレポート
 @bot.command()
-async def report(ctx, *, repo:str):
+async def report(ctx, repo):
     if ctx.guild.id == 659177467243659287:
         channel = ctx.guild.get_channel(663311114477633566)
         repo = "From: " + str(ctx.author) + "\n" + repo
