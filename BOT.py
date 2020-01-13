@@ -127,10 +127,9 @@ async def mkf(ctx, *, message='0'):
         try:
             factors = makefactor(int(message))
         except ValueError:
-            ctx.send(error)
-        for factor in factors:
-            ctx.send(str(factor))
-
+            await ctx.send(error)
+        factors = ', '.join(map(str, factors))
+        await ctx.send(factors)
 
 @bot.command()
 async def calc(ctx, *, formula):
