@@ -14,6 +14,26 @@ import discord
 import numpy as np
 from discord.ext import commands
 
+
+def makefactor(x:int) -> list:
+    """
+    Return factors list of x. Raise ValueError if x is 0 or 1.
+    """
+    if x == 0 or x == 1:
+        raise ValueError
+    f_ls = []
+    i = 2
+    while i < x:
+        f = x / i
+        if x % i == 0:
+            f_ls.append(i)
+            i += 1
+            continue
+        else:
+            i += 1
+            continue
+    return f_ls
+
 bot = commands.Bot(command_prefix='??')
 bot.remove_command('help')
 token = 'NjIwOTYxMTQ0NjU5NzcxMzky'
@@ -99,6 +119,18 @@ async def isprime(ctx, *, message='0'):
         await ctx.send(returning)
     else:
         await ctx.send(returning)
+
+@bot.command()
+async def mkf(ctx, *, message='0'):
+    error = "入力が不適切です:自然数を入力して下さい"
+    if message.isdecimal() == True:
+        try:
+            factors = makefactor(int(message))
+        except ValueError:
+            ctx.send(error)
+        for factor in factors:
+            ctx.send(str(factor))
+
 
 @bot.command()
 async def calc(ctx, *, formula):
