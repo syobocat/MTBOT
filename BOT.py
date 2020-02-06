@@ -179,7 +179,7 @@ async def python(ctx, *, toexe = 'print("コマンドを入力してください
 #バグレポート
 @bot.command()
 async def report(ctx, *, repo):
-    repo = 'From: ' + str(ctx.author) + '\n```\n' + repr(repo) + '\n```'
+    repo = 'バグレポートが送信されました。\nFrom: ' + str(ctx.author) + '\n```\n' + repr(repo) + '\n```'
 
     # Hello, World鯖に送信
     guild = bot.get_guild(663309702230179841)
