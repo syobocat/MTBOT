@@ -179,10 +179,17 @@ async def python(ctx, *, toexe = 'print("コマンドを入力してください
 #バグレポート
 @bot.command()
 async def report(ctx, *, repo):
-    if ctx.guild.id == 659177467243659287:
-        channel = ctx.guild.get_channel(663311114477633566)
-        repo = 'From: ' + str(ctx.author) + '\n```\n' + repr(repo) + '\n```'
-        await channel.send(repo)
+    repo = 'From: ' + str(ctx.author) + '\n```\n' + repr(repo) + '\n```'
+
+    # Hello, World鯖に送信
+    guild = bot.get_guild(663309702230179841)
+    channel = guild.get_channel(663379323893317682)
+    await channel.send(repo)
+
+    # geek.hに送信
+    guild = bot.get_guild(659177467243659287)
+    channel = guild.get_channel(663311114477633566)
+    await channel.send(repo)
 
 
 # 接続
