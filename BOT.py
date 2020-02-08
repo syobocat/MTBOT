@@ -136,7 +136,7 @@ async def calc(ctx, *, formula):
 
 @bot.command()
 async def python(ctx, *, toexe = 'print("コマンドを入力してください")'):
-    DoAlthoughOver2000 = toexe.startswith('over2000')
+    DoAlthoughOver2000 = toexe.startswith('-full')
     if DoAlthoughOver2000 == True:
         toexe = toexe.split(None, 1)
         if len(toexe) >= 2:
@@ -169,7 +169,7 @@ async def python(ctx, *, toexe = 'print("コマンドを入力してください
             content = '```\n' + '\n'.join(content) + '\n```'
             await ctx.send(content)
         else:
-            await ctx.send('出力された文字数が2000を超えています。続行するには`over2000`オプションをつけてください。')
+            await ctx.send('出力された文字数が2000を超えています。続行するには`-full`オプションをつけてください。')
     else:
         result = '```\n' + result + '\n```'
         await ctx.send(result)
