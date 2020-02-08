@@ -1,21 +1,20 @@
-﻿'''
+﻿"""
 ルールなど
 Python上級者の方で「ここはこうしたほうがいい」というものがありましたら追記・変更ご自由にどうぞ。
 
 
-'''
+"""
 
 # 設定　よほどのことがなければ変更しないこと
-import io
-import sys
 import datetime
 import subprocess
+
 import discord
 import numpy as np
 from discord.ext import commands
 
 
-def makefactor(x:int) -> list:
+def makefactor(x: int) -> list:
     """
     Return factors list of x. Raise ValueError if x is 0 or 1.
     """
@@ -33,6 +32,7 @@ def makefactor(x:int) -> list:
             continue
     return f_ls
 
+
 bot = commands.Bot(command_prefix='??')
 bot.remove_command('help')
 token = 'NjIwOTYxMTQ0NjU5NzcxMzky'
@@ -42,11 +42,12 @@ loaded = datetime.datetime.now(
 )
 loaded = loaded.strftime('%Y年%m月%d日 %H:%M')
 
+
 # ここからコマンド
 
-#ヘルプコマンド。コマンドを追加した場合、周りに従って追記すること。
+# ヘルプコマンド。コマンドを追加した場合、周りに従って追記すること。
 @bot.command()
-async def help(ctx, tohelp='all'): #tohelpにはヘルプを表示するコマンド名が入る
+async def help(ctx, tohelp='all'):  # tohelpにはヘルプを表示するコマンド名が入る
     if tohelp == 'all':
         embed = discord.Embed(title='現在利用可能なコマンドは以下のとおりです。', description='', color=0xffffff)
         embed.add_field(name='??check', value='このBotがオンラインがどうか確認できます。Botの反応がないときにお使いください。', inline=False)
@@ -56,18 +57,22 @@ async def help(ctx, tohelp='all'): #tohelpにはヘルプを表示するコマ�
         embed.add_field(name='??python', value='Pythonのコマンドを実行し、実行結果を返します。', inline=False)
         embed.add_field(name='??report', value='バグやエラーが発生した、Botが正常に動作しないといった場合はこのコマンドで報告をお願いします。', inline=False)
 
-        #!!helpの説明は一番最後に
+        # !!helpの説明は一番最後に
         embed.add_field(name='??help', value='この一覧を表示します。', inline=False)
         await ctx.send(embed=embed)
     if tohelp == 'check':
-        embed = discord.Embed(title='使用方法 ： `??check`', description='Botが現在オンラインかどうかを確認できます。\nBotの反応がないときにお使いください。', inline=False, color=0xffffff)
+        embed = discord.Embed(title='使用方法 ： `??check`', description='Botが現在オンラインかどうかを確認できます。\nBotの反応がないときにお使いください。',
+                              inline=False, color=0xffffff)
         await ctx.send(embed=embed)
     if tohelp == 'say':
-        embed = discord.Embed(title='使用方法 ： `??say (delete) <文字列>`', description='BOTに任意の文字列を送信させることができます。\n文字列の前にdeleteを入れることにより、本当にBOTが話しているように見せることもできます。', color=0xffffff)
+        embed = discord.Embed(title='使用方法 ： `??say (delete) <文字列>`',
+                              description='BOTに任意の文字列を送信させることができます。\n文字列の前にdeleteを入れることにより、本当にBOTが話しているように見せることもできます。',
+                              color=0xffffff)
         await ctx.send(embed=embed)
 
     if tohelp == 'isprime':
-        embed = discord.Embed(title='使用方法 ： `??isprime <数値>`', description='素数かどうか判定します。数値以外の入力には対応していません。', color=0xffffff)
+        embed = discord.Embed(title='使用方法 ： `??isprime <数値>`', description='素数かどうか判定します。数値以外の入力には対応していません。',
+                              color=0xffffff)
         await ctx.send(embed=embed)
 
     if tohelp == 'calc':
@@ -79,12 +84,16 @@ async def help(ctx, tohelp='all'): #tohelpにはヘルプを表示するコマ�
         await ctx.send(embed=embed)
 
     if tohelp == 'report':
-        embed = discord.Embed(title='使用方法 ： `??report <文字列>`', description='バグやエラーが発生した、Botが正常に動作しないといった場合はこのコマンドで報告をお願いします。送信されたレポートは開発者の元に届きます。', color=0xffffff)
-        await ctx.send(embed=mbed)
+        embed = discord.Embed(title='使用方法 ： `??report <文字列>`',
+                              description='バグやエラーが発生した、Botが正常に動作しないといった場合はこのコマンドで報告をお願いします。送信されたレポートは開発者の元に届きます。',
+                              color=0xffffff)
+        await ctx.send(embed=embed)
+
 
 @bot.command()
 async def check(ctx):
     await ctx.send("このBotは現在稼働中です。\n最終更新日時は" + loaded + 'です。')
+
 
 @bot.command()
 async def say(ctx, *, message='使用方法 ： `??say 文字列`'):
@@ -97,13 +106,14 @@ async def say(ctx, *, message='使用方法 ： `??say 文字列`'):
 
     await ctx.send(message)
 
+
 @bot.command()
 async def isprime(ctx, *, message='0'):
     returning = '入力が不適切です:自然数を入力して下さい'
     is_composite = False
     if message.isdecimal() == True:
         num = int(message)
-        if num < 2 or (num % 2 == 0 and num > 2) :
+        if num < 2 or (num % 2 == 0 and num > 2):
             returning = str(num) + 'は素数ではありません'
         else:
             lim = int(np.sqrt(num)) + 1
@@ -119,8 +129,10 @@ async def isprime(ctx, *, message='0'):
     else:
         await ctx.send(returning)
 
+
 @bot.command()
 async def mkf(ctx, *, message='0'):
+    global factors
     error = "入力が不適切です:自然数を入力して下さい"
     if message.isdecimal() == True:
         try:
@@ -130,12 +142,15 @@ async def mkf(ctx, *, message='0'):
         factors = ', '.join(map(str, factors))
         await ctx.send(factors)
 
+
 @bot.command()
 async def calc(ctx, *, formula):
     await ctx.send(str(eval(formula)))
 
+
 @bot.command()
-async def python(ctx, *, toexe = 'print("コマンドを入力してください")'):
+async def python(ctx, *, toexe='print("コマンドを入力してください")'):
+    global endline, endline
     DoAlthoughOver2000 = toexe.startswith('-full')
     if DoAlthoughOver2000 == True:
         toexe = toexe.split(None, 1)
@@ -175,7 +190,7 @@ async def python(ctx, *, toexe = 'print("コマンドを入力してください
         await ctx.send(result)
 
 
-#バグレポート
+# バグレポート
 @bot.command()
 async def report(ctx, *, repo):
     repo = 'バグレポートが送信されました。\nFrom: ' + str(ctx.author) + '\n```\n' + repr(repo) + '\n```'
