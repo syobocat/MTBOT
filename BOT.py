@@ -61,32 +61,22 @@ async def help(ctx, tohelp='all'):  # tohelpにはヘルプを表示するコマ
         embed.add_field(name='??help', value='この一覧を表示します。', inline=False)
         await ctx.send(embed=embed)
     if tohelp == 'check':
-        embed = discord.Embed(title='使用方法 ： `??check`', description='Botが現在オンラインかどうかを確認できます。\nBotの反応がないときにお使いください。',
-                              inline=False, color=0xffffff)
+        embed = discord.Embed(title='使用方法 ： `??check`', description='Botが現在オンラインかどうかを確認できます。\nBotの反応がないときにお使いください。', inline=False, color=0xffffff)
         await ctx.send(embed=embed)
     if tohelp == 'say':
-        embed = discord.Embed(title='使用方法 ： `??say (delete) <文字列>`',
-                              description='BOTに任意の文字列を送信させることができます。\n文字列の前にdeleteを入れることにより、本当にBOTが話しているように見せることもできます。',
-                              color=0xffffff)
+        embed = discord.Embed(title='使用方法 ： `??say (delete) <文字列>`', description='BOTに任意の文字列を送信させることができます。\n文字列の前にdeleteを入れることにより、本当にBOTが話しているように見せることもできます。', color=0xffffff)
         await ctx.send(embed=embed)
-
     if tohelp == 'isprime':
-        embed = discord.Embed(title='使用方法 ： `??isprime <数値>`', description='素数かどうか判定します。数値以外の入力には対応していません。',
-                              color=0xffffff)
+        embed = discord.Embed(title='使用方法 ： `??isprime <数値>`', description='素数かどうか判定します。数値以外の入力には対応していません。', color=0xffffff)
         await ctx.send(embed=embed)
-
     if tohelp == 'calc':
         embed = discord.Embed(title='使用方法 ： `??calc <式>`', description='BOTに計算させることができます。', color=0xffffff)
         await ctx.send(embed=embed)
-
     if tohelp == 'python':
         embed = discord.Embed(title='使用方法 ： `??python <コマンド>', description='Pythonのコマンドを実行し、実行結果を返します。', color=0xffffff)
         await ctx.send(embed=embed)
-
     if tohelp == 'report':
-        embed = discord.Embed(title='使用方法 ： `??report <文字列>`',
-                              description='バグやエラーが発生した、Botが正常に動作しないといった場合はこのコマンドで報告をお願いします。送信されたレポートは開発者の元に届きます。',
-                              color=0xffffff)
+        embed = discord.Embed(title='使用方法 ： `??report <文字列>`', description='バグやエラーが発生した、Botが正常に動作しないといった場合はこのコマンドで報告をお願いします。送信されたレポートは開発者の元に届きます。', color=0xffffff)
         await ctx.send(embed=embed)
 
 
