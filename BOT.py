@@ -24,7 +24,6 @@ def makefactor(x:int) -> list:
     f_ls = []
     i = 2
     while i < x:
-        f = x / i
         if x % i == 0:
             f_ls.append(i)
             i += 1
