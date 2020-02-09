@@ -8,9 +8,9 @@ Python上級者の方で「ここはこうしたほうがいい」というも�
 # 設定　よほどのことがなければ変更しないこと
 import datetime
 import subprocess
+import numpy as np
 
 import discord
-import numpy as np
 from discord.ext import commands
 
 
@@ -50,17 +50,12 @@ loaded = loaded.strftime('%Y年%m月%d日 %H:%M')
 async def help(ctx, tohelp='all'):  # tohelpにはヘルプを表示するコマンド名が入る
     if tohelp == 'all':
         embed = discord.Embed(title='現在利用可能なコマンドは以下のとおりです。', description='', color=0xffffff)
-        embed.add_field(
-            name='??check', value='このBotがオンラインがどうか確認できます。Botの反応がないときにお使いください。', inline=False)
+        embed.add_field(name='??check', value='このBotがオンラインがどうか確認できます。Botの反応がないときにお使いください。', inline=False)
         embed.add_field(name='??say', value='任意のテキストを送信します。', inline=False)
-        embed.add_field(name='??isprime',
-                        value='素数かどうか判定します。数値以外の入力には対応していません。', inline=False)
-        embed.add_field(
-            name='??calc', value='BOTに計算させることができます。Pythonの標準機能を使用するため、高度なことはできません。', inline=False)
-        embed.add_field(name='??python',
-                        value='Pythonのコマンドを実行し、実行結果を返します。', inline=False)
-        embed.add_field(
-            name='??report', value='バグやエラーが発生した、Botが正常に動作しないといった場合はこのコマンドで報告をお願いします。', inline=False)
+        embed.add_field(name='??isprime', value='素数かどうか判定します。数値以外の入力には対応していません。', inline=False)
+        embed.add_field(name='??calc', value='BOTに計算させることができます。Pythonの標準機能を使用するため、高度なことはできません。', inline=False)
+        embed.add_field(name='??python', value='Pythonのコマンドを実行し、実行結果を返します。', inline=False)
+        embed.add_field(name='??report', value='バグやエラーが発生した、Botが正常に動作しないといった場合はこのコマンドで報告をお願いします。', inline=False)
 
         # !!helpの説明は一番最後に
         embed.add_field(name='??help', value='この一覧を表示します。', inline=False)
@@ -75,12 +70,10 @@ async def help(ctx, tohelp='all'):  # tohelpにはヘルプを表示するコマ
         embed = discord.Embed(title='使用方法 ： `??isprime <数値>`', description='素数かどうか判定します。数値以外の入力には対応していません。', color=0xffffff)
         await ctx.send(embed=embed)
     if tohelp == 'calc':
-        embed = discord.Embed(title='使用方法 ： `??calc <式>`',
-                                description='BOTに計算させることができます。', color=0xffffff)
+        embed = discord.Embed(title='使用方法 ： `??calc <式>`', description='BOTに計算させることができます。', color=0xffffff)
         await ctx.send(embed=embed)
     if tohelp == 'python':
-        embed = discord.Embed(title='使用方法 ： `??python <コマンド>',
-                                description='Pythonのコマンドを実行し、実行結果を返します。', color=0xffffff)
+        embed = discord.Embed(title='使用方法 ： `??python <コマンド>', description='Pythonのコマンドを実行し、実行結果を返します。', color=0xffffff)
         await ctx.send(embed=embed)
     if tohelp == 'report':
         embed = discord.Embed(title='使用方法 ： `??report <文字列>`', description='バグやエラーが発生した、Botが正常に動作しないといった場合はこのコマンドで報告をお願いします。送信されたレポートは開発者の元に届きます。', color=0xffffff)
