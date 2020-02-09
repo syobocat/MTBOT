@@ -13,6 +13,17 @@ import numpy as np
 import discord
 import math
 from discord.ext import commands
+import functools
+
+modules = {
+    "datetime": 3.8,
+    "subprocess": ,
+    "numpy",
+    "discord",
+    "math",
+    "discord.ext",
+    "functools"
+}
 
 
 def makefactor(x: int) -> list:
