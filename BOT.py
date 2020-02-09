@@ -49,8 +49,7 @@ loaded = loaded.strftime('%Y年%m月%d日 %H:%M')
 @bot.command()
 async def help(ctx, tohelp='all'):  # tohelpにはヘルプを表示するコマンド名が入る
     if tohelp == 'all':
-        embed = discord.Embed(title='現在利用可能なコマンドは以下のとおりです。',
-                              description='', color=0xffffff)
+        embed = discord.Embed(title='現在利用可能なコマンドは以下のとおりです。', description='', color=0xffffff)
         embed.add_field(
             name='??check', value='このBotがオンラインがどうか確認できます。Botの反応がないときにお使いください。', inline=False)
         embed.add_field(name='??say', value='任意のテキストを送信します。', inline=False)
