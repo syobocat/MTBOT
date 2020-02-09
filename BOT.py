@@ -19,8 +19,10 @@ module_names = [name.project_name for name in pkg_resources.working_set]
 module_versions = [version.version for version in pkg_resources.working_set]
 
 
+
 def join_zip(t:tuple) -> str:
-    pass
+    tl = t[0] + t[1]
+    return tl
 
 def makefactor(x: int) -> list:
     """
