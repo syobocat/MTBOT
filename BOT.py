@@ -13,18 +13,14 @@ import numpy as np
 import discord
 import math
 from discord.ext import commands
-import functools
+import pkg_resources
 
-modules = {
-    "datetime": 3.8,
-    "subprocess": ,
-    "numpy",
-    "discord",
-    "math",
-    "discord.ext",
-    "functools"
-}
+module_names = [name.project_name for name in pkg_resources.working_set]
+module_versions = [version.version for version in pkg_resources.working_set]
 
+
+def join_zip(t:tuple) -> str:
+    pass
 
 def makefactor(x: int) -> list:
     """
