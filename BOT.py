@@ -10,7 +10,7 @@ import datetime
 import subprocess
 
 import discord
-import numpy as np
+import math
 from discord.ext import commands
 
 
@@ -113,7 +113,7 @@ async def isprime(ctx, *, message='0'):
         if num < 2 or (num % 2 == 0 and num > 2):
             returning = str(num) + 'は素数ではありません'
         else:
-            lim = int(np.sqrt(num)) + 1
+            lim = int(math.sqrt(num)) + 1
             for i in range(3, lim, 2):
                 if num % i == 0:
                     is_composite = True
