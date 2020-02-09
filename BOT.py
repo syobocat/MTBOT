@@ -17,6 +17,7 @@ import pkg_resources
 
 module_names = [name.project_name for name in pkg_resources.working_set]
 module_versions = [version.version for version in pkg_resources.working_set]
+modules = zip(module_names, module_versions)
 
 
 
@@ -189,6 +190,12 @@ async def python(ctx, *, toexe='print("コマンドを入力してください")
     else:
         result = '```\n' + result + '\n```'
         await ctx.send(result)
+
+
+@bot.command()
+async def dev_modules(ctx):
+    for mdls in map(join_zip, modules):
+        await ctx.send(mdls)
 
 
 # バグレポート
