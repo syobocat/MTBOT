@@ -25,24 +25,6 @@ def join_zip(t:tuple) -> str:
     tl = t[0] + t[1]
     return tl
 
-def makefactor(x: int) -> list:
-    """
-    Return factors list of x. Raise ValueError if x is 0 or 1.
-    """
-    if x == 0 or x == 1:
-        raise ValueError
-    f_ls = []
-    i = 2
-    while i < x:
-        if x % i == 0:
-            f_ls.append(i)
-            i += 1
-            continue
-        else:
-            i += 1
-            continue
-    return f_ls
-
 
 bot = commands.Bot(command_prefix='??')
 bot.remove_command('help')
@@ -129,19 +111,6 @@ async def isprime(ctx, *, message='0'):
         await ctx.send(returning)
     else:
         await ctx.send(returning)
-
-
-@bot.command()
-async def mkf(ctx, *, message='0'):
-    global factors
-    error = "入力が不適切です:自然数を入力して下さい"
-    if message.isdecimal() == True:
-        try:
-            factors = makefactor(int(message))
-        except ValueError:
-            await ctx.send(error)
-        factors = ', '.join(map(str, factors))
-        await ctx.send(factors)
 
 
 @bot.command()
