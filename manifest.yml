@@ -1,6 +1,6 @@
 applications:
  - name: MTBOT
    random-route: true
-   memory: 128M
+   memory: 64M
    command: python BOT.py
    path: .
